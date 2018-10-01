@@ -67,5 +67,17 @@ function removeTodo(todo) {
 }
 
 function updateTodo(todo) {
-    console.log(todo.data('completed'));
+    var updatedUrl = '/api/todos/' + todo.data('id');
+    var isDone = !todo.data('completed');
+    var updateData = {completed: isDone};
+    
+    $.ajax({
+        method: 'PUT',
+        url: updatedUrl,
+        data: updateData
+    })
+    .then(function(updatedTodo) {
+        todo.toggleClass('done');
+        todo.data('completed', isDone);
+    });
 }
