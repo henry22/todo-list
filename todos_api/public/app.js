@@ -8,6 +8,10 @@ $(document).ready(function() {
             createTodo();
         }
     });
+    
+    $('.list').on('click', 'span', function() {
+        console.log('Click');
+    })
 });
 
 function addTodos(todos) {
@@ -18,7 +22,7 @@ function addTodos(todos) {
 }
 
 function addTodo(todo) {
-    var newTodo = $('<li class="task">' + todo.name + '</li>');
+    var newTodo = $('<li class="task">' + todo.name + '<span>X</span></li>');
     
     if(todo.completed) {
         newTodo.addClass('done');
