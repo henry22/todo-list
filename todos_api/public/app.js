@@ -10,7 +10,8 @@ $(document).ready(function() {
     });
     
     $('.list').on('click', 'span', function() {
-        console.log('Click');
+        // $(this).parent().remove();
+        console.log($(this).parent().data('id'));
     })
 });
 
@@ -23,6 +24,8 @@ function addTodos(todos) {
 
 function addTodo(todo) {
     var newTodo = $('<li class="task">' + todo.name + '<span>X</span></li>');
+    
+    newTodo.data('id', todo._id);
     
     if(todo.completed) {
         newTodo.addClass('done');
